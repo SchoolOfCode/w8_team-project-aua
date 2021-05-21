@@ -28,7 +28,6 @@ const buttonClicker = document.getElementById("click-here");
 const textGenerator = document.getElementById("text");
 const dateSelector = document.querySelector('input[type="date"]');
 console.log(dateSelector.value);
-
 buttonClicker.addEventListener("click", getNews);
 
 async function getNews() {
