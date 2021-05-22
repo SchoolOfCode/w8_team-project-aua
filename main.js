@@ -24,6 +24,7 @@
 // Start by fetching News API
 // connect to DOM
 
+const list_html = document.getElementById("list");
 const buttonClicker = document.getElementById("click-here");
 const textGenerator = document.getElementById("text");
 const dateSelector = document.querySelector("#date-selector");
@@ -57,10 +58,19 @@ async function getNews() {
             "&api-key=778db1c3-eabf-4572-8025-649d08dd934c"
     );
     let article = await response.json();
-    console.log(article);
-    console.log(article.response.results[1].webTitle);
-    textGenerator.innerText = article.response.results[1].webTitle;
-    console.log(textGenerator);
+    //console.log(article);
+    //console.log(article.response.results[1].webTitle);
+    //textGenerator.innerText = article.response.results[1].webTitle;
+    //textGenerator.innerText = article.response.results[2].webTitle;
+    //textGenerator.innerText = article.response.results[3].webTitle;
+    //console.log(textGenerator);
+
+    for (var i = 0; i < article.response.results.length; i++) {
+        var listItem = document.createElement("li");
+
+        listItem.innerHTML += article.response.results[i].webTitle;
+        list_html.appendChild(listItem);
+    }
     // .then((response) => {
     //   console.log(response);
     // })
