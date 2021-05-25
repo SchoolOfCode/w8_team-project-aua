@@ -18,13 +18,14 @@ function updateValue(e) {
 
 async function getNews() {
     const response = await fetch(
-        "https://content.guardianapis.com/search?&from-date=" +
+        "https://content.guardianapis.com/search?q=%20NOT%20Crosswords&from-date=" +
             date +
             "&to-date=" +
             date +
             "&api-key=778db1c3-eabf-4572-8025-649d08dd934c&show-fields=body,thumbnail"
     );
     let article = await response.json();
+    console.log(article);
 
     for (var i = 0; i < article.response.results.length; i++) {
         var articleContainer = document.createElement("div");
