@@ -25,48 +25,46 @@ async function getNews() {
             "&api-key=778db1c3-eabf-4572-8025-649d08dd934c&show-fields=body,thumbnail"
     );
     let article = await response.json();
-    console.log(article);
 
     for (var i = 0; i < article.response.results.length; i++) {
-        
-        var listItem = document.createElement("li");
-        listItem.innerHTML +=
-            article.response.results[i].sectionName +
-            "<br>" +
-            article.response.results[i].webTitle +
-            "<br>" +
-            article.response.results[i].webUrl;
-        list_html.appendChild(listItem);
+        var category = document.createElement("div");
+        category.setAttribute("id", "category" + [i]);
+        category.setAttribute("class", "category");
+        category.innerHTML += article.response.results[i].sectionName;
+        list_html.appendChild(category);
 
+        var title = document.createElement("div");
+        title.setAttribute("id", "title" + [i]);
+        title.setAttribute("class", "title");
+        title.innerHTML += article.response.results[i].webTitle;
+        list_html.appendChild(title);
 
-        var listImg = document.createElement("img");
-        listImg.src += article.response.results[i].fields.thumbnail;
-        list_html.appendChild(listImg);
+        var url = document.createElement("a");
+        title.setAttribute("id", "url" + [i]);
+        title.setAttribute("class", "url");
+        url.innerText += article.response.results[i].webUrl;
+        url.href += article.response.results[i].webUrl;
+        list_html.appendChild(url);
 
+        var image = document.createElement("img");
+        image.setAttribute("id", "image" + [i]);
+        image.setAttribute("class", "image");
+        image.src += article.response.results[i].fields.thumbnail;
+        list_html.appendChild(image);
 
+        var button = document.createElement("button");
+        button.setAttribute("id", "button" + [i]);
+        button.setAttribute("class", "button");
+        button.setAttribute("onclick", "myFunction" + [i] + "()");
+        button.id = "btnFunc" + [i];
+        button.innerText = "show/Hide Article";
+        list_html.appendChild(button);
 
-        var listBody = document.createElement("div");
-        listBody.innerHTML += article.response.results[i].fields.body;
-        list_html.appendChild(listBody);
-
+        var body = document.createElement("div");
+        body.setAttribute("id", "body" + [i]);
+        body.setAttribute("class", "body");
+        body.setAttribute("style", "display:none");
+        body.innerHTML += article.response.results[i].fields.body;
+        list_html.appendChild(body);
     }
 }
-
-//function ShowAndHide() { 
-//    if (listBody.style == "display: none") {
-//        listBody.style = "display = block";
-//    } else {
-//        listBody.style.display = '';
-//    }
-//}
-//        var button = document.createElement('button');
-//button.appendChild(document.createTextNode('delete'));
-//list_html.appendChild(button);
-//buttonFunc = addEventListener("click", ShowAndHide)
-//
-//var showMeBtn = document.createElement("button");
-//showMeBtn.id = "btnFunc";
-//showMeBtn.innerText += "Show/Hide Article";
-//list_html.appendChild(showMeBtn);
-//
-//buttonFunc = addEventListener("click", ShowAndHide);
