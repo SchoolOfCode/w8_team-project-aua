@@ -27,44 +27,49 @@ async function getNews() {
     let article = await response.json();
 
     for (var i = 0; i < article.response.results.length; i++) {
+        var articleContainer = document.createElement("div");
+        articleContainer.setAttribute("id", `articleContainer${[i]}`);
+        articleContainer.setAttribute("class", "articleContainer");
+        list_html.appendChild(articleContainer);
+
         var category = document.createElement("div");
-        category.setAttribute("id", "category" + [i]);
+        category.setAttribute("id", `category${[i]}`);
         category.setAttribute("class", "category");
         category.innerHTML += article.response.results[i].sectionName;
-        list_html.appendChild(category);
+        document.getElementById(`articleContainer${[i]}`).appendChild(category);
 
         var title = document.createElement("div");
-        title.setAttribute("id", "title" + [i]);
+        title.setAttribute("id", `title${[i]}`);
         title.setAttribute("class", "title");
         title.innerHTML += article.response.results[i].webTitle;
-        list_html.appendChild(title);
+        document.getElementById(`articleContainer${[i]}`).appendChild(title);
 
         var url = document.createElement("a");
-        title.setAttribute("id", "url" + [i]);
+        title.setAttribute("id", `url${[i]}`);
         title.setAttribute("class", "url");
         url.innerText += article.response.results[i].webUrl;
         url.href += article.response.results[i].webUrl;
-        list_html.appendChild(url);
+        document.getElementById(`articleContainer${[i]}`).appendChild(url);
 
         var image = document.createElement("img");
-        image.setAttribute("id", "image" + [i]);
+        image.setAttribute("id", `image${[i]}`);
         image.setAttribute("class", "image");
         image.src += article.response.results[i].fields.thumbnail;
-        list_html.appendChild(image);
+        document.getElementById(`articleContainer${[i]}`).appendChild(image);
 
         var button = document.createElement("button");
-        button.setAttribute("id", "button" + [i]);
+        button.setAttribute("id", `button${[i]}`);
         button.setAttribute("class", "button");
-        button.setAttribute("onclick", "myFunction" + [i] + "()");
-        button.id = "btnFunc" + [i];
+        button.setAttribute("onclick", `myFunction${[i]}()`);
+        button.id = `btnFunc${[i]}`;
         button.innerText = "show/Hide Article";
-        list_html.appendChild(button);
+        document.getElementById(`articleContainer${[i]}`).appendChild(button);
 
         var body = document.createElement("div");
-        body.setAttribute("id", "body" + [i]);
+        body.setAttribute("id", `body${[i]}`);
         body.setAttribute("class", "body");
         body.setAttribute("style", "display:none");
         body.innerHTML += article.response.results[i].fields.body;
-        list_html.appendChild(body);
+        document.getElementById(`articleContainer${[i]}`).appendChild(body);
     }
 }

@@ -38,3 +38,16 @@ input,
 label {
     margin: 0.4rem 0;
 }
+
+.articleContainer {
+    width: 500px;
+    padding: 40px;
+}
+
+#list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: space-around;
+}
