@@ -1,5 +1,6 @@
-h2 {
-    color: ghostwhite;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -12,44 +13,24 @@ body {
     background-color: #efefef;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
         sans-serif;
-}
-
-/* Button group to to of page */
-.btn-group button {
-    background-color: white; /* Green background */
-    border: 2px solid #659dbd; /* Green border */
-    color: #659dbd; /* White text */
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-        sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    width: 33%;
-}
-
-label {
-    display: block;
-    font: 1rem "Fira Sans", sans-serif;
-    color: white;
-}
-
-input,
-label {
-    margin: 0.4rem 0;
-}
-
-.articleContainer {
-    width: 500px;
-    padding: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 #list {
-    display: flex;
+    /*display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
-    align-content: space-around;
+    align-content: space-around;*/
+
+    padding: 60px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    cursor: pointer;
 }
 
 #logo {
@@ -66,4 +47,49 @@ label {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.articleContainer {
+    width: 600px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    border-radius: 6px;
+    transition: 0.3s linear;
+}
+
+.articleContainer2 {
+    background-color: #ffffffdd;
+    margin: 0 20px;
+    padding: 30px;
+    border-radius: 6px;
+    transform: translateY(-60px);
+    transition: 0.3s linear;
+}
+
+.url {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.category {
+    font-size: 15px;
+    font-style: italic;
+    color: #e77f67;
+    margin-bottom: 10px;
+}
+
+.articleContainer:hover .image {
+    transform: translateY(5px);
+}
+
+.articleContainer:hover .articleContainer2 {
+    transform: translateY(-50px);
+}
+
+.body > figure > img {
+    width: 600px;
+    height: 400px;
 }

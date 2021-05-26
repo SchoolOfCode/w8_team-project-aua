@@ -33,30 +33,43 @@ async function getNews() {
         articleContainer.setAttribute("class", "articleContainer");
         list_html.appendChild(articleContainer);
 
+        var image = document.createElement("img");
+        image.setAttribute("id", `image${[i]}`);
+        image.setAttribute("class", "image");
+        image.src = article.response.results[i].fields.thumbnail;
+        if (!image.src.includes("undefined")) {
+            document
+                .getElementById(`articleContainer${[i]}`)
+                .appendChild(image);
+        }
+
+        var articleContainer2 = document.createElement("div");
+        articleContainer2.setAttribute("id", `articleContainer2${[i]}`);
+        articleContainer2.setAttribute("class", "articleContainer2");
+        document
+            .getElementById(`articleContainer${[i]}`)
+            .appendChild(articleContainer2);
+
         var category = document.createElement("div");
         category.setAttribute("id", `category${[i]}`);
         category.setAttribute("class", "category");
-        category.innerHTML += article.response.results[i].sectionName;
-        document.getElementById(`articleContainer${[i]}`).appendChild(category);
+        category.innerHTML = article.response.results[i].sectionName;
+        document
+            .getElementById(`articleContainer2${[i]}`)
+            .appendChild(category);
 
         var title = document.createElement("div");
         title.setAttribute("id", `title${[i]}`);
         title.setAttribute("class", "title");
-        title.innerHTML += article.response.results[i].webTitle;
-        document.getElementById(`articleContainer${[i]}`).appendChild(title);
+        title.innerHTML = article.response.results[i].webTitle;
+        document.getElementById(`articleContainer2${[i]}`).appendChild(title);
 
         var url = document.createElement("a");
         title.setAttribute("id", `url${[i]}`);
         title.setAttribute("class", "url");
-        url.innerText += article.response.results[i].webUrl;
-        url.href += article.response.results[i].webUrl;
-        document.getElementById(`articleContainer${[i]}`).appendChild(url);
-
-        var image = document.createElement("img");
-        image.setAttribute("id", `image${[i]}`);
-        image.setAttribute("class", "image");
-        image.src += article.response.results[i].fields.thumbnail;
-        document.getElementById(`articleContainer${[i]}`).appendChild(image);
+        url.innerText = article.response.results[i].webUrl;
+        url.href = article.response.results[i].webUrl;
+        document.getElementById(`articleContainer2${[i]}`).appendChild(url);
 
         var button = document.createElement("button");
         button.setAttribute("id", `button${[i]}`);
@@ -64,13 +77,13 @@ async function getNews() {
         button.setAttribute("onclick", `myFunction${[i]}()`);
         button.id = `btnFunc${[i]}`;
         button.innerText = "show/Hide Article";
-        document.getElementById(`articleContainer${[i]}`).appendChild(button);
+        document.getElementById(`articleContainer2${[i]}`).appendChild(button);
 
         var body = document.createElement("div");
         body.setAttribute("id", `body${[i]}`);
         body.setAttribute("class", "body");
         body.setAttribute("style", "display:none");
-        body.innerHTML += article.response.results[i].fields.body;
-        document.getElementById(`articleContainer${[i]}`).appendChild(body);
+        body.innerHTML = article.response.results[i].fields.body;
+        document.getElementById(`articleContainer2${[i]}`).appendChild(body);
     }
 }
